@@ -18,8 +18,8 @@ MAINTAINER "cuisongliu <cuisongliu@qq.com>"
 ENTRYPOINT ["/usr/bin/cepctl"]
 
 ARG TARGETPLATFORM
-WORKDIR /usr/bin/
+WORKDIR /root
 
-RUN --mount=target=/build tar xf /build/dist/cepctl_*_$(echo ${TARGETPLATFORM} | tr '/' '_' | sed -e 's/arm_/arm/').tar.gz
+RUN --mount=target=/build tar xf /build/dist/endpoints-operator_*_$(echo ${TARGETPLATFORM} | tr '/' '_' | sed -e 's/arm_/arm/').tar.gz && cp cepctl /usr/bin
 
 CMD ["--help"]
