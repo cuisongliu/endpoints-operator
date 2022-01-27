@@ -15,11 +15,7 @@
 FROM alpine:latest
 MAINTAINER "cuisongliu <cuisongliu@qq.com>"
 
-ENTRYPOINT ["/usr/bin/cepctl"]
-
 ARG TARGETPLATFORM
 WORKDIR /root
 
 RUN --mount=target=/build tar xf /build/dist/endpoints-operator_*_$(echo ${TARGETPLATFORM} | tr '/' '_' | sed -e 's/arm_/arm/').tar.gz && cp cepctl /usr/bin
-
-CMD ["--help"]
